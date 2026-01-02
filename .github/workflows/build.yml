@@ -14,7 +14,6 @@ jobs:
       contents: read
       id-token: write
       
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -29,3 +28,4 @@ jobs:
       - name: Debug
         run: | 
           which tailscale
+          sudo tailscale set --ssh
