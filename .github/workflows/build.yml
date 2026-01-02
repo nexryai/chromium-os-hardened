@@ -27,6 +27,5 @@ jobs:
 
       - name: Debug
         run: | 
-          which tailscale
           sudo tailscale set --ssh
           sleep 500
