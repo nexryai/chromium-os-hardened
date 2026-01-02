@@ -1,0 +1,31 @@
+name: Test Building CI
+on:
+    push:
+        branches:
+            - "main"
+
+permissions: {}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Tailscale
+        uses: tailscale/github-action@v4
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          audience: ${{ secrets.TS_AUDIENCE }}
+          tags: tag:github-actions
+
+      - name: Debug
+        run: | 
+          which tailscale
